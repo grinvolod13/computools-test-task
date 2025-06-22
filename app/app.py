@@ -4,4 +4,4 @@ from app.endpoints import result_router
 
 
 app = FastAPI()
-app.include_router(result_router, prefix="results")
+app.include_router(result_router, prefix="/results")
