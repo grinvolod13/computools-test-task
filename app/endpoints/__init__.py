@@ -1,1 +1,1 @@
-from .result import router as result_router # type: ignore
+from .results import router as result_router # type: ignore
