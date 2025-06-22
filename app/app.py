@@ -1,14 +1,18 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 
-import app.dependency
+from app import dependency
 from app.endpoints import result_router
 
-if not app.dependency.DEBUG:
+if not dependency.DEBUG:
     raise NotImplementedError("Feature is not ready for live yet")
 else:
     # TODO: load data from test json to db
     ...
 
 app = FastAPI()
-app.include_router(result_router, prefix="/results")
+app.include_router(
+    result_router,
+    prefix="/results",
+    dependencies=[Depends(dependency.get_session)]
+    )
 
