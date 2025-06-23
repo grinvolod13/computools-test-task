@@ -1,6 +1,6 @@
 # computools-test-task
 ## Install & Run
-1. Install dependencies from requirements.txt (You may use venv)
+1. Install dependencies from `requirements.txt` (You may use venv)
 ```bash
 pip install -r requirements.txt
 ```
