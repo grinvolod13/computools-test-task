@@ -4,7 +4,8 @@
 ```bash
 pip install -r requirements.txt
 ```
-2. Run
+2. Set up environment variables, or edit `debug.env` - variables from here dont overwrite system's
+3. Run
 ```bash
 fastapi run
 ```
