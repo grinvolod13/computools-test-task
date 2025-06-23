@@ -1,3 +1,4 @@
+import contextlib
 import os
 from typing import Generator
 import dotenv
@@ -13,6 +14,7 @@ else:
     DEBUG: bool = False
 
 DEBUG_CONNECTION_STRING: str = os.getenv("DEBUG_CONNECTION_STRING", "")
+CONNECTION_STRING: str = os.getenv("CONNECTION_STRING", "")
 DEBUG_DATA = "./test_database.json"
 
 #--------------- Database connections, dependencies --------------#
@@ -20,7 +22,11 @@ DEBUG_DATA = "./test_database.json"
 from sqlalchemy import engine_from_config
 from app.models import Base
 
-engine = engine_from_config({"sqlalchemy.url": DEBUG_CONNECTION_STRING})
+if DEBUG:
+    engine = engine_from_config({"sqlalchemy.url": DEBUG_CONNECTION_STRING})
+else:
+    engine = engine_from_config({"sqlalchemy.url": CONNECTION_STRING})
+    
 Base.metadata.create_all(engine)
 
 from sqlalchemy.orm import sessionmaker, Session
@@ -38,3 +44,5 @@ def get_session()->Generator[Session, None, None]:
         raise e
     finally:
         session.close()
+
+get_session_contextmanager = contextlib.contextmanager(get_session)
