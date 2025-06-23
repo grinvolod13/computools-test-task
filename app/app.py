@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI
 from sqlalchemy.exc import IntegrityError
 
 from app import dependency
@@ -24,6 +24,5 @@ app = FastAPI()
 app.include_router(
     result_router,
     prefix="/results",
-    dependencies=[Depends(dependency.get_session)],
     )
 
