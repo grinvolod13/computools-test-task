@@ -1,4 +1,19 @@
 # computools-test-task
+## Install & Run
+1. Install dependencies from requirements.txt (You may use venv)
+```bash
+pip install -r requirements.txt
+```
+2. Run
+```bash
+fastapi run
+```
+## Quality tools
+Project is set up for `VScode` with extensions:
+ * `Black` formatter
+ * `Pylance`
+
+Needed config is located in `/.vscode/settings.json`
 
 ## Assignment
 🤔 Let's say the application is called: 'SuperBenchmark'.
